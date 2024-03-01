@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Movies</title>
+</head>
+<body>
+    <h1>Filter Movies</h1>
+    <form method="GET">
+        <label for="release_date">Filter by Release Date:</label><br>
+        <input type="date" id="release_date" name="release_date">
+        <button type="submit">Filter</button>
+    </form>
+
+    <form method="GET">
+        <label for="director">Filter by Director:</label><br>
+        <input type="text" id="director" name="director">
+        <button type="submit">Filter</button>
+    </form>
+
+    <form method="GET">
+        <label for="gender">Filter by Gender:</label><br>
+        <input type="text" id="gender" name="gender">
+        <button type="submit">Filter</button>
+    </form>
+
+    
+    {% if movies_list %}
+        <ul>
+        {% for movie in movies_list %}
+            <h2>{{ movie.title }}</h2>
+            <p><strong>Director:</strong> {{ movie.director }}</p>
+            <p><strong>Genre:</strong> {{ movie.gender }}</p>
+            <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+            <p><strong>Duration:</strong> {{ movie.duration }} minutes</p>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
+
